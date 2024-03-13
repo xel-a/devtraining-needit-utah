@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Set appropriate What needed fields based on the selected Request type</description>
+        <field/>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>NeedIt Set What Needed Options</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+   // set the appropriate options for what needed field on load
+	var requestType = g_form.getValue('u_request_type');
+	var whatneeded = g_form.getValue('u_what_needed');
+	var wn_name = 'u_what_needed';
+	
+	g_form.clearOptions(wn_name);
+	
+	switch(requestType) {
+		case 'hr':
+			g_form.addOption(wn_name, 'hr1', 'Human Resources 1');
+			g_form.addOption(wn_name, 'hr2', 'Human Resources 2');
+			g_form.addOption(wn_name, 'other', 'Other');
+			break;
+		case 'facilities':
+			g_form.addOption(wn_name, 'facilities1', 'Facilities 1');
+			g_form.addOption(wn_name, 'facilities2', 'Facilities 2');
+			g_form.addOption(wn_name, 'other', 'Other');
+			break;
+		case 'legal':
+			g_form.addOption(wn_name, 'legal1', 'Legal 1');
+			g_form.addOption(wn_name, 'legal2', 'Legal 2');
+			g_form.addOption(wn_name, 'other', 'Other');
+	}
+	
+	if(!g_form.isNewRecord()) {
+		g_form.setValue(wn_name, whatneeded);
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>ignashuu</sys_created_by>
+        <sys_created_on>2024-03-06 15:30:38</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>dca0259d93700210292f73118bba10dd</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>NeedIt Set What Needed Options</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_client_dca0259d93700210292f73118bba10dd</sys_update_name>
+        <sys_updated_by>ignashuu</sys_updated_by>
+        <sys_updated_on>2024-03-06 15:40:54</sys_updated_on>
+        <table>x_58872_needit_needit</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
